@@ -1,9 +1,13 @@
-import Image from "next/image";
+"use client"
+import PostResult from "./components/PostResult/PostResult";
+import Tag from "./components/Tag/Tag"; 
 
 export default function Home() {
+
   return (
     <div>
-     aaa
+      <Tag />
+      <PostResult />
     </div>
   );
 }

@@ -6,6 +6,7 @@
 }
 body {
   background-color: white !important;
+  color: #000 !important;
 }
 
 @theme inline {
