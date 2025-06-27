@@ -4,6 +4,8 @@ import Image from "next/image"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 
+
+
 interface PostedElement {
   id: number,
   link: string,
@@ -36,7 +38,7 @@ export default function PostResult() {
     {
       postedElement.map((posted:PostedElement) => (
         <li key={posted.id} className=" w-[24rem] mr-3 mb-3">
-          <Link href={posted.link}> 
+          <Link href={`/post/${posted.id}`}> 
               <Image 
                 src={posted.sauce}
                 alt={posted.alt}
