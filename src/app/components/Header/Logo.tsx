@@ -17,7 +17,7 @@ export default function Logo({show} : LogoProps) {
                 alt="ロゴ画像"
                 width={200}
                 height={100}
-                style={{ width: '200px', height: 'auto' }}
+                className="h-auto w-auto"
             />
         </Link>
         

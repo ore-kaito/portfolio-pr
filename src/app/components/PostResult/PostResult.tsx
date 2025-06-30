@@ -1,59 +1,58 @@
-"use client"
-import Link from "next/link"
-import Image from "next/image"
+
+import Image from "next/image";
+import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { prisma } from "../../lib/prisma";
 
 
+interface Post {
+  id: number;
+  title: string;
+  description: string;
+  image: string | null;
+  createdAt: Date;
+};
 
-interface PostedElement {
-  id: number,
-  link: string,
-  sauce: string,
-  alt: string,
-  styles: {width: number, height: number}
-}
+export default async function PostResult() {
+  const posts: Post[] = await prisma.post.findMany({
+    orderBy: { createdAt: "desc" },
+  });
 
-const postedElement:PostedElement[] = [
-{
-  id: 1,
-  link: "/1/post",
-  sauce: "/images/test01.jpg",
-  alt: "テスト画像",
-  styles: {width: 570, height: 300},
-
-},
-{
-  id: 2,
-  link: "/2/post",
-  sauce: "/images/test02.jpg",
-  alt: "テスト画像2",
-  styles: {width: 570, height: 300}
-}
-];
-
-export default function PostResult() {
   return (
+    
     <ul className="flex flex-wrap">
-    {
-      postedElement.map((posted:PostedElement) => (
-        <li key={posted.id} className=" w-[24rem] mr-3 mb-3">
-          <Link href={`/post/${posted.id}`}> 
-              <Image 
-                src={posted.sauce}
-                alt={posted.alt}
-                width={posted.styles.width}
-                height={posted.styles.height}
-              />
-              <h2>タイトル</h2>
-              <div className="flex justify-between">
-                <FontAwesomeIcon icon={faHeart} />
-                <div>2025.06.19</div>
+      <h1 className="text-2xl font-bold mb-4 w-full">投稿一覧</h1>
+      
+      {posts.map((post) => (
+
+        <Link href={`/post/${post.id}`} key={post.id}>
+          <div className="border p-4 hover:bg-gray-100 cursor-pointer w-96 mr-4 mb-4">
+            <Image
+              src={post.image || "/images/default.jpg"}
+              alt={post.title}
+              width={300}
+              height={200}
+              priority
+              className="h-auto w-auto"
+            />
+            <h2 className="font-bold mt-2">{post.title}</h2>
+            <p className="text-sm text-gray-600">{post.description}</p>
+            <div className="flex justify-between items-center mt-2">
+              <FontAwesomeIcon icon={faHeart} />
+              <div className="text-xs text-gray-400">
+                {new Date(post.createdAt).toLocaleString("ja-JP", {
+                  year: "numeric",
+                  month: "2-digit",
+                  day: "2-digit",
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })}
               </div>
-          </Link>
-        </li>
-      ))
-    }
+            </div>
+          </div>
+        </Link>
+      ))}
     </ul>
-  )
+  );
 }

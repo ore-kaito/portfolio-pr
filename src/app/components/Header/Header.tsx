@@ -2,7 +2,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import Button from "../Button/Button"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Logo from "./Logo"
 import { usePathname } from "next/navigation";
@@ -24,7 +24,11 @@ export default function HeaderPage() {
   };
 
 
-
+ useEffect(() => {
+    if (pathname === "/") {
+      setIsPosted(false);
+    }
+  }, [pathname]);
 
   return (
     <div className="flex justify-between items-center p-3 pl-0 pr-6">
@@ -41,6 +45,8 @@ export default function HeaderPage() {
               alt="ユーザー情報"
               width={80}
               height={80}
+              className="h-auto w-auto"
+
             />
           </Link>
 
