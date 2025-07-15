@@ -18,8 +18,9 @@ export default function RootLayout({
   const pathname = usePathname();
   const hideHeaderPaths = ["/post"];
   return (
-    <html lang="ja">
-      <body>
+
+    <html lang='en' suppressHydrationWarning>
+      <body suppressHydrationWarning>
         <HeaderPage />
         {children}
         <FooterPage />
