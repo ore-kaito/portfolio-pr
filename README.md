@@ -1,5 +1,6 @@
 まだ途中の開発ではありますが、採用の参考になればと思います。
-![Uploading スクリーンショット 2025-07-17 7.02.41.png…]()
+<img width="1461" height="791" alt="demo" src="https://github.com/user-attachments/assets/94c526ff-5f93-4139-a363-852cb6c9907d" />
+
 
 
 
