@@ -1,5 +1,6 @@
 まだ途中の開発ではありますが、採用の参考になればと思います。
-<img width="775" height="216" alt="スクリーンショット 2025-07-17 6 51 58" src="https://github.com/user-attachments/assets/3f0ad6ba-3695-4ce2-b9c4-7fb6e6c89f49" />
+![Uploading スクリーンショット 2025-07-17 7.02.41.png…]()
+
 
 
 ## 🔧 使用技術
