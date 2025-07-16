@@ -24,8 +24,8 @@ export default async function PostResult() {
     <ul className="flex flex-wrap">
       <h1 className="text-2xl font-bold mb-4 w-full">投稿一覧</h1>
       {posts.map((post) => (
-        <>
-          <Link href={`/post/${post.id}`} key={post.id}>
+        <div key={post.id} className="relative">
+          <Link href={`/post/${post.id}`} className="relative"> 
             <div className="border p-4 hover:bg-gray-100 cursor-pointer w-96 mr-4 mb-4">
               <Image
                 src={post.image || "/images/default.jpg"}
@@ -41,7 +41,7 @@ export default async function PostResult() {
                     <h2 className="font-bold mt-2">{post.title}</h2>
                     <p className="text-sm text-gray-600">{post.description}</p>
                   </div>
-                  <ThreeDotMenu />
+                  
                 </div>
                 <div className="flex justify-between items-center mt-2">
                   <FontAwesomeIcon icon={faHeart} className="text-red-500" style={{ width: "20px", height: "20px",color: "#000"}} />
@@ -59,8 +59,11 @@ export default async function PostResult() {
             </div>
             
           </Link>
+          <div  className="absolute bottom-[70px] right-[34px]">
+            <ThreeDotMenu postId={post.id} />
+          </div>
           
-        </>
+        </div>
 
       ))}
     </ul>
