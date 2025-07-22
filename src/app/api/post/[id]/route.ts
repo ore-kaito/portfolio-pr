@@ -1,18 +1,25 @@
 import { prisma } from "../../../../lib/prisma";
-import { NextRequest, NextResponse } from 'next/server';
+interface PageProps {
+  params: {
+    id: string;
+  };
+}
 
-
-export async function DELETE(req, { params }) {
+export default async function Page({ params }: PageProps) {
   const postId = Number(params.id);
 
-  try {
-    await prisma.post.delete({
-      where: { id: postId },
-    });
+  const post = await prisma.post.findUnique({
+    where: { id: postId },
+  });
 
-    return NextResponse.json({ message: "Deleted successfully" });
-  } catch (error) {
-    console.error("削除エラー:", error);
-    return NextResponse.json({ message: "削除に失敗しました" }, { status: 500 });
+  if (!post) {
+    return <div>投稿が見つかりませんでした</div>;
   }
+
+  return (
+    <div>
+      <h1>{post.title}</h1>
+      <p>{post.content}</p>
+    </div>
+  );
 }
