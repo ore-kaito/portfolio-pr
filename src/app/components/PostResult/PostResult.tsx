@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
-import { prisma } from "../../lib/prisma";
+import { prisma } from "../../../lib/prisma";
 import ThreeDotMenu from "./ThreeDotMenu/ThreeDotMenu";
 
 interface Post {
