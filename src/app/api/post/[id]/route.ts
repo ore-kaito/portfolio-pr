@@ -4,7 +4,7 @@ import { prisma } from "../../lib/prisma";
 export async function DELETE(
   request: Request,
   { params }: { params: { id: string } }
-) {
+): Promise<Response> {
   const postId = Number(params.id);
 
   try {
