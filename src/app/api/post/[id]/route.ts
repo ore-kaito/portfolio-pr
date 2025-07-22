@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from 'next/server';
 export async function DELETE(
   req: NextRequest,
   { params }: { params: { id: string } }
-): Promise<NextResponse> {
+) {
   const postId = Number(params.id);
 
   try {
