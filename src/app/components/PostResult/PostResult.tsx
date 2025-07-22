@@ -36,12 +36,15 @@ export default async function PostResult() {
                 className="h-auto w-auto"
               />
               <div>
-                <div className="flex justify-between items-center">
+                <div className="flex items-center">
                   <div>
                     <h2 className="font-bold mt-2">{post.title}</h2>
                     <p className="text-sm text-gray-600">{post.description}</p>
                   </div>
-                  
+                  <div className="absolute bottom-[70px] right-[34px]">
+                    <ThreeDotMenu postId={post.id} />
+                  </div>
+
                 </div>
                 <div className="flex justify-between items-center mt-2">
                   <FontAwesomeIcon icon={faHeart} className="text-red-500" style={{ width: "20px", height: "20px",color: "#000"}} />
@@ -59,9 +62,7 @@ export default async function PostResult() {
             </div>
             
           </Link>
-          <div  className="absolute bottom-[70px] right-[34px]">
-            <ThreeDotMenu postId={post.id} />
-          </div>
+
           
         </div>
 

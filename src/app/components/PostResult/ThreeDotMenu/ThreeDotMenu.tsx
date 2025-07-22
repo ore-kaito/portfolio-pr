@@ -5,14 +5,34 @@ import React, { useState } from "react";
 interface Props {
   postId: number;
 }
+const handleDelete = async ({ postId }: Props) => {
+  const confirmed = confirm("本当に削除しますか？");
+  if (!confirmed) return;
 
+  try {
+    const res = await fetch(`/api/post/${postId}`, {
+      method: "DELETE",
+    });
+
+    if (res.ok) {
+      // ページをリロードする、または状態を更新して非表示にするなど
+      alert("削除しました");
+      location.reload(); // 今回は簡易的にリロード
+    } else {
+      alert("削除に失敗しました");
+    }
+  } catch (error) {
+    console.error("削除エラー", error);
+    alert("エラーが発生しました");
+  }
+};
 export default function ThreeDotMenu({ postId }: Props) {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = (e: React.MouseEvent) => {
     e.stopPropagation(); // ページ遷移を防ぐ
     e.preventDefault();
-    setIsOpen((prev) => !prev);
+    setIsOpen((prev) => !prev); 
   };
 
   return (
@@ -32,8 +52,15 @@ export default function ThreeDotMenu({ postId }: Props) {
               編集
             </span>
           </Link>
+          {/* クリックしたら、prismaのデータベースから削除 */}
+          <div>
+            <span onClick={ () => handleDelete({ postId })} className="block w-full text-left px-4 py-2 hover:bg-gray-100">
+              削除
+            </span>
+          </div>
         </div>
       )}
     </div>
   );
 }
+
