@@ -6,6 +6,7 @@ export async function DELETE(req, { params }) {
 
   try {
     await prisma.post.delete({
+      
       where: { id: postId },
     });
 
