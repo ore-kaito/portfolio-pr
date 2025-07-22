@@ -1,11 +1,8 @@
 import { prisma } from "../../../../lib/prisma";
-import { NextRequest, NextResponse } from 'next/server';
+import { NextResponse } from 'next/server';
 
 
-export async function DELETE(
-  req: NextRequest,
-  { params }: { params: { id: string } }
-): Promise<NextResponse> {
+export async function DELETE(req, { params }) {
   const postId = Number(params.id);
 
   try {
