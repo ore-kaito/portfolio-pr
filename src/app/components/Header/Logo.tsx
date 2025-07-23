@@ -13,7 +13,7 @@ export default function Logo({show} : LogoProps) {
     <div>
         <Link href="/">
             <Image
-                src="/images/logo.jpg"
+                src="/images/logo.png"
                 alt="ロゴ画像"
                 width={200}
                 height={100}

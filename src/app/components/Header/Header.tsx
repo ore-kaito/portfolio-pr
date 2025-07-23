@@ -41,7 +41,7 @@ export default function HeaderPage() {
         <>
           <Link href="/" className="mx-3">
             <Image
-              src="/images/user.jpg"
+              src="/images/icon.png"
               alt="ユーザー情報"
               width={80}
               height={80}
