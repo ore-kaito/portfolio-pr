@@ -47,16 +47,17 @@
 
 import { notFound } from "next/navigation";
 
-export default async function PostDetailPage({
-  params,
-}: {
+export default async function PostDetailPage(props: {
   params: { id: string };
 }) {
-  if (!params?.id) return notFound();
+  const { params } = props; // ✅ ここで同期的に扱える
+  const id = params.id;
+
+  if (!id) return notFound();
 
   return (
     <div>
-      <h1>Post ID: {params.id}</h1>
+      <h1>Post ID: {id}</h1>
     </div>
   );
 }
