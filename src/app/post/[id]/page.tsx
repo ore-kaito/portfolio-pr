@@ -18,7 +18,6 @@
 
 import { prisma } from "../../../lib/prisma";
 import { notFound } from "next/navigation";
-import { Metadata } from "next"; // optional if using metadata
 import { FC } from "react";
 
 type Props = {
