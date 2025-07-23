@@ -18,15 +18,13 @@
 
 import { prisma } from "../../../lib/prisma";
 import { notFound } from "next/navigation";
-import { FC } from "react";
 
-type Props = {
-  params: {
-    id: string;
-  };
-};
 
-const PostDetailPage: FC<Props> = async ({ params }) => {
+export default async function PostDetailPage({
+  params,
+}: {
+  params: { id: string };
+}) {
   const post = await prisma.post.findUnique({ where: { id: Number(params.id) } });
 
   if (!post) return notFound();
@@ -42,6 +40,4 @@ const PostDetailPage: FC<Props> = async ({ params }) => {
       <p className="mt-2 text-sm text-gray-600">{post.description}</p>
     </div>
   );
-};
-
-export default PostDetailPage;
+}
