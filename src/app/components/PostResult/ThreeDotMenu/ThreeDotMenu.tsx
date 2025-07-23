@@ -1,5 +1,5 @@
 'use client';
-import Link from "next/link";
+
 import React, { useState } from "react";
 
 interface Props {
@@ -47,11 +47,11 @@ export default function ThreeDotMenu({ postId }: Props) {
       {/* メニュー */}
       {isOpen && (
         <div className="absolute right-0 mt-2 w-32 bg-white border rounded shadow-md z-50">
-          <Link href={`/edit/${postId}`}>
+
             <span className="block w-full text-left px-4 py-2 hover:bg-gray-100">
               編集
             </span>
-          </Link>
+
           {/* クリックしたら、prismaのデータベースから削除 */}
           <div>
             <span onClick={ () => handleDelete({ postId })} className="block w-full text-left px-4 py-2 hover:bg-gray-100">

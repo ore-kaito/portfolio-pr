@@ -50,6 +50,7 @@ export default async function PostResult() {
                   </div>
                   <div className="absolute bottom-[70px] right-[34px]">
                     <ThreeDotMenu postId={post.id} />
+                   
                   </div>
 
                 </div>
