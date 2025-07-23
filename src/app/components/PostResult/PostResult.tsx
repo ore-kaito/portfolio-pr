@@ -10,13 +10,20 @@ interface Post {
   id: number;
   title: string;
   description: string;
-  image: string | null;
+  imagePath: string | null;
   createdAt: Date;
 };
 
 export default async function PostResult() {
   const posts: Post[] = await prisma.post.findMany({
     orderBy: { createdAt: "desc" },
+    select: {
+      id: true,
+      title: true,
+      description: true,
+      imagePath: true,
+      createdAt: true,
+    }
   });
 
   return (
@@ -28,7 +35,7 @@ export default async function PostResult() {
           <Link href={`/post/${post.id}`} className="relative"> 
             <div className="border p-4 hover:bg-gray-100 cursor-pointer w-96 mr-4 mb-4">
               <Image
-                src={post.image || "/images/default.jpg"}
+                src={post.imagePath || "/images/default.jpg"}
                 alt={post.title}
                 width={300}
                 height={200}

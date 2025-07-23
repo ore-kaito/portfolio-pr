@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
       githubUrl,
       description,
       highlight,
-      image: imagePath,
+      imagePath,
     },
   });
 

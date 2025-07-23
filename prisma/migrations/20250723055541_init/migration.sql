@@ -6,5 +6,6 @@ CREATE TABLE "Post" (
     "githubUrl" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "highlight" TEXT NOT NULL,
+    "imagePath" TEXT,
     "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
